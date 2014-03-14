@@ -1,5 +1,8 @@
+/* @pjs font="AurulentSansMono-Regular"; 
+ */
+
 String p1 = "Arguments are local variables used inside the body of a function that get filled with values when the function is called. In the examples, they have one purpose only, to initialize the variables inside of an object. These are the variables that count, the car's actual color, the car's actual x location, and so on. The constructor's arguments are just temporary, and exist solely to pass a value from where the object is made into the object itself. ";
-int wpm = 500;
+int wpm = 200;
 int fontSize = 20;
 ////
 PFont textFont;
@@ -35,9 +38,7 @@ void draw() {
   textFont(textFont);
   text(words[i], width/2+(charWidth*wOdd), height/2); 
 
-  if(i<words.length){
-    i++;
-  }
+   i++;
 }
 
 void keyPressed() {
@@ -60,4 +61,5 @@ void keyPressed() {
   }
   println(i);
 }
+
 
