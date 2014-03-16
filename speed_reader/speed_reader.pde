@@ -28,7 +28,7 @@ void draw() {
   middleChar= ' ';
   if(wordLength > 1){
     middleChar = words[i].charAt(floor(wordLength/2)-1);
-      wOdd = 1.0;
+      wOdd = 1;
   }
   if (wordLength % 2 == 0) {
     wOdd = .5;
@@ -38,8 +38,8 @@ void draw() {
 
   fill(0);
   //centered line for guidance
-  //line(width/2-(charWidth/2), 0, width/2-(charWidth/2), height);
-  //line(width/2+(charWidth/2), 0, width/2+(charWidth/2), height);
+  line(width/2-(charWidth/2), 0, width/2-(charWidth/2), height);
+  line(width/2+(charWidth/2), 0, width/2+(charWidth/2), height);
 
   textFont(textFont);
   text(words[i], width/2+(charWidth*wOdd), height/2); 
