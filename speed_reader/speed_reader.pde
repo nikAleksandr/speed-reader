@@ -3,7 +3,7 @@ int wpm = 400;
 int fontSize = 20;
 ////
 PFont textFont;
-String[] words = split(p1, ' ');
+String[] words;
 int i = 0;
 float wOdd;
 char middleChar;
@@ -14,6 +14,12 @@ void setup() {
   textFont = createFont("AurulentSansMono-Regular", fontSize);
   smooth();
   textAlign(CENTER, CENTER);
+
+  // Load file and chop it up
+  String[] lines = loadStrings("america.txt");
+  String allText = join(lines, " ");
+  words = splitTokens(allText, " ,.?!:;[]-");
+  ///
 
   frameRate(wpm/60);
   words = append(words, "The End?");
@@ -26,9 +32,9 @@ void draw() {
 
   wOdd = 0;
   middleChar= ' ';
-  if(wordLength > 1){
+  if (wordLength > 1) {
     middleChar = words[i].charAt(floor(wordLength/2)-1);
-      wOdd = 1;
+    wOdd = 1;
   }
   if (wordLength % 2 == 0) {
     wOdd = .5;
@@ -38,8 +44,9 @@ void draw() {
 
   fill(0);
   //centered line for guidance
-  line(width/2-(charWidth/2), 0, width/2-(charWidth/2), height);
-  line(width/2+(charWidth/2), 0, width/2+(charWidth/2), height);
+  stroke(200);
+  line(width/2-(charWidth/2), (height/2)-fontSize, width/2-(charWidth/2), (height/2)+fontSize);
+  line(width/2+(charWidth/2), (height/2)-fontSize, width/2+(charWidth/2), (height/2)+fontSize);
 
   textFont(textFont);
   text(words[i], width/2+(charWidth*wOdd), height/2); 
@@ -47,7 +54,7 @@ void draw() {
   text(middleChar, width/2, height/2);
 
   if (i<(words.length-1)) {
-     i++;
+    i++;
   }
 }
 
